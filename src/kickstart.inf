@@ -95,7 +95,7 @@ Constant Checking 0;
 Release 0; ! Serial "AAMMDD";
 
 !! Descomentar para compilar la versión Web/Móvil:
-Constant VERSION_WEB_MOBILE;
+!Constant VERSION_WEB_MOBILE;
 
 !!------------------------------------------------------------------------------
 !!	Control de las extensiones utilizadas por la obra

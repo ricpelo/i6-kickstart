@@ -1,0 +1,332 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+</head><body style="color: rgb(0, 0, 0); background-color: rgb(204, 204, 153); background-image: url(../../_themes/willow/willbk.jpg);" alink="#cc9900" link="#993333" vlink="#336666">
+<h1>BresC</h1>
+
+<br>
+
+<span style="font-style: italic;">Creado por Baltasarq,
+basado en la herramienta <span style="font-weight: bold;">blc</span>
+del paquete <span style="font-weight: bold;">iBlorb</span>,
+creado por Ross L. Raszweski.<br>
+El propósito de esta herramienta es combinar las
+posibilidades de bres y blc.<br>
+</span>
+<h2>Introducción</h2>
+
+<div style="text-align: justify;">En el momento de
+escribir este documento, para empaquetar los recursos en paquetes <span style="font-style: italic;">blorb</span>
+("blorbificarlas", como se suele decir, especialmente entre los
+aficionados anglosajones), es necesario utilizar dos aplicaciones
+distintas: <span style="font-style: italic;">bres</span>
+y <span style="font-style: italic;">blc</span>.
+Estas herramientas realizan dos etapas de la misma tarea: una genera el
+archivo a incluir por <span style="font-style: italic;">inform</span>
+para poder utilizar los recursos empaquetados con la aventura ( archivo
+con extensión ".bli", a partir de ahora denominado "archivo
+bli"), y la otra realmente empaqueta la aventura y los recursos.<br>
+<br>
+<span style="font-style: italic;">At
+the moment of writing this document, in order to pack resource files in
+blorb packages (blorbify them), it is necessary to use two different
+applications:bres and blc. This tools are used as two legs of the same
+task: the first one generates the file to be included by inform
+in order to use the resources packed with the adventure (the bli file,
+from now on), and finally the second one actually packs the adventure
+together with the resources files.</span><br>
+</div>
+
+<br>
+
+<div style="text-align: justify;"><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;
+bresc</span>
+lo que trata es de realizar ambas tareas, aunándolo todo en
+un
+solo programa, que trata de corregir errores, ser más
+portable,
+y proveer más flexibilidad.<br>
+<br>
+<span style="font-style: italic;">&nbsp;&nbsp;&nbsp; bresc, manages
+both legs in the same tool, trying to fix errors, be more portable and
+flexible.</span><br>
+</div>
+
+<h2>Uso de bresc</h2>
+
+<div style="text-align: justify;">Al
+igual que con las herramientas iBlorb, es necesario realizar una
+primera etapa, en la que se genera el archivo bli, según los
+recursos que se hayan incluído en el archivo de recursos
+(archivo con extensión <span style="font-style: italic;">.res</span>)
+que sirve de entrada al programa. Una vez compilada la aventura, es
+necesario empaquetarla con todos los recursos en un archivo <span style="font-style: italic;">blorb</span>. (archivo con
+extensión .blb o .blorb, diferenciando en ocasiones entre
+máquina Z (<span style="font-style: italic;">.zblorb</span>) y Glulx (<span style="font-style: italic;">.gblorb)</span>.<br>
+&nbsp;&nbsp;&nbsp;
+Es probable que la primera etapa haya que hacerla un número
+bastante menor de veces que la segunda (si se desea, en cualquier
+caso). Para estos dos usos, se puede configurar la herramienta a
+través de opciones de línea de comando.<br>
+&nbsp;&nbsp;&nbsp; Es interesante sabe que si la herramienta se renombra como <span style="font-style: italic;">bres</span>, funcionará como tal, mientras que simulará el funcionamiento de blc si es renombrada como <span style="font-style: italic;">blc</span>.<br>
+<br>
+&nbsp;&nbsp;&nbsp; <span style="font-style: italic;">It is worth noting that the tool can be renamed as bres, in which case it works as that tool, while simulates blc if renamed as blc.</span><br>
+</div>
+
+<h2>Opciones de línea de comando (<span style="font-style: italic;">command-line
+options</span>)</h2>
+
+<br>
+
+<table style="width: 75%; text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="2" cellspacing="2">
+
+  <tbody>
+    <tr>
+      <td style="background-color: black; color: white; font-weight: bold;" align="center" valign="middle">Opción</td>
+      <td style="vertical-align: middle; color: white; font-weight: bold; text-align: center; background-color: black;">Efecto</td>
+    </tr>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" align="center" valign="middle">
+      <pre>-version</pre>
+      </td>
+      <td style="background-color: rgb(204, 204, 204);" align="center" valign="middle">Imprime mensaje de
+bienvenida y versión y finaliza.<br>
+      <span style="font-style: italic;">Prints welcome and version
+information and ends.</span></td>
+    </tr>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" align="center" valign="middle">
+      <pre>-nobli</pre>
+      </td>
+      <td style="background-color: rgb(204, 204, 204);" align="center" valign="middle">Empaqueta la aventura
+con los recursos, pero no genera el archivo bli.<br>
+      <span style="font-style: italic;">Packs the adventure, but does
+not generate the bli file.</span></td>
+    </tr>
+    <tr>
+      <td style="background-color: rgb(204, 204, 204);" align="center" valign="middle">
+      <pre>-onlybli</pre>
+      </td>
+      <td style="background-color: rgb(204, 204, 204);" align="center" valign="middle">Sólo genera
+el archivo bli, pero no empaqueta.<br>
+      <span style="font-style: italic;">Generates the bli flle, but
+does not pack anything.</span></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: middle; text-align: center; background-color: rgb(204, 204, 204);">
+      <pre style="background-color: rgb(204, 204, 204);">-shortext</pre>
+
+      </td>
+      <td style="vertical-align: top; text-align: center; background-color: rgb(204, 204, 204);">Siempre usa la extensión <i>.blb</i>, en lugar de <i>.gblorb</i> o <i>.zblorb</i>
+<br>It always uses the <i>.blb</i> extension, instead of the <i>.zblorb</i> or <i>.gblorb</i> ones.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<h2>Formato del archivo de entrada (<span style="font-style: italic;">input
+file syntax</span>)</h2>
+
+<h3>Introducción</h3>
+
+El archivo de entrada es en general compatible con el que acepta la
+herramienta <span style="font-style: italic;">bres</span>,
+si bien acepta algunas opciones extra.<br>
+
+<span style="font-style: italic;">The input file is compatible with the
+one accepted by bres, though it accepts some new extra options and adds
+more flexibility.</span><br>
+
+<br>
+
+<ul>
+
+  <li style="text-align: justify;">Comentarios: las
+líneas en blanco se ignoran, al
+igual que aquellas que comiencen por los siguientes caracteres:</li>
+</ul>
+
+<span style="font-style: italic;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+Comments: blank lines are ignored, as well as lines beginning with:</span>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; . ! / (
+&gt;<br>
+
+<br>
+
+<ul>
+
+  <li style="text-align: justify;">Aventuras, es decir,
+relatos interactivos ejecutables (<span style="font-style: italic;">interactive
+fiction files</span>):</li>
+</ul>
+
+<div style="margin-left: 80px;">EXE, EXEC, CODE.<br>
+</div>
+
+<br>
+
+<ul>
+
+  <li style="text-align: justify;">Gráficos:
+los gráficos (archivos .jpg
+o .png) se denotan usando una de las siguientes palabras clave (sin
+importar
+mayúsculas/minúsculas):</li>
+</ul>
+
+<div style="margin-left: 40px;"><span style="font-style: italic;">Graphics
+(in png or jpg formats) are included by using one of the following
+keywords:</span></div>
+
+<div style="margin-left: 80px;">PIC, PICT, PICTURE.<br>
+</div>
+
+<br>
+
+<ul>
+
+  <li style="text-align: justify;">Sonidos: los archivos
+de sonidos (.ogg, .mod y .aiff), se
+denotan por una de las siguientes palabras clave:</li>
+</ul>
+
+<div style="margin-left: 40px;"><span style="font-style: italic;">Sounds
+(in ogg, mod or aiff formats) are included by using one of the
+following keywords:</span></div>
+
+<div style="margin-left: 80px;">SND, MSC, MUSIC, SOUND. <br>
+</div>
+
+<br>
+
+<ul>
+
+  <li style="text-align: justify;">Información
+bibliográfica: se trata
+de un archivo XML con extensión .ifiction que debe seguir
+los estándares del tratado de Babel. Se denotan por una de las
+siguientes palabras clave:</li>
+</ul>
+
+<div style="margin-left: 40px;"><span style="font-style: italic;">Bibliographic
+information (in ifiction format) are included by using one of the
+following keywords:</span></div>
+
+<div style="margin-left: 80px;">BIB, IFMD, MTA, META,
+BIBLIO, BIBLIOGRAPHIC.<br>
+</div>
+
+<br>
+
+<ul>
+
+  <li style="text-align: justify;">Cubierta o portada: se
+trata de un archivo
+gráfico del mismo tipo que los comentados anteriormente,
+sólo que este se dedicaría a la portada del
+producto final. Se denota por una de las siguientes palabras clave:</li>
+</ul>
+
+<div style="margin-left: 40px;"><span style="font-style: italic;">The
+cover (in jpg or png formats) is included by using one of the following
+keywords:</span></div>
+
+<div style="margin-left: 80px;">COV, FSPC, COVER, FRONT,
+POST, POSTER.<br>
+</div>
+
+<br>
+
+<div style="text-align: justify;">&nbsp;&nbsp;&nbsp;
+Cuando los
+nombres de los archivos de recursos (gráficos, sonidos),
+aparecen con rutas relativas, entonces <span style="font-style: italic;">bresc</span> completa estas rutas con
+la ruta del archivo de recursos de entrada. Así, por
+ejemplo, si
+se ejecuta la herramienta con el siguiente comando:<br>
+&nbsp;&nbsp;&nbsp;<span style="font-style: italic;"> When resource
+files appear with relative routes, then </span>bresc<span style="font-style: italic;"> will complete these paths with the path
+of the res input file.</span><br>
+</div>
+
+<pre style="margin-left: 40px;">$ bresc prj/adventure/adventure.res</pre>
+
+<div style="text-align: justify;">&nbsp;&nbsp;&nbsp;
+... y existe un recurso gráfico con el siguiente nombre de
+archivo: <span style="font-style: italic;">res/adventure.png</span>,
+entonces <span style="font-weight: bold;">bresc</span>
+compondrá la ruta resultante como: <span style="font-style: italic;">prj/adventure/res/adventure.png</span><br>
+</div>
+
+<h3>Ejemplo (<span style="font-style: italic;">Example</span>)</h3>
+
+A continuación se muestra el contenido de un archivo de
+recursos (archivo .res).<br>
+
+<pre style="margin-left: 40px;">EXE abismo.ulx</pre>
+
+<pre style="margin-left: 40px;">PIC&nbsp;abismo.png</pre>
+
+<pre style="margin-left: 40px;">SND abismo.ogg</pre>
+
+<pre style="margin-left: 40px;">COV portadaAbismo.jpg</pre>
+
+<pre style="margin-left: 40px;">BIB abismo.ifiction</pre>
+
+&nbsp;&nbsp;&nbsp; Nótese que los identificadores son opcionales. El
+mismo
+archivo podría haberse escrito de la siguiente manera:<br>
+
+<span style="font-style: italic;">&nbsp;&nbsp;&nbsp; It is worth noting
+that identifiers are optional. The same file could have been written in
+the following way:</span><br>
+
+<pre style="margin-left: 40px;">EXE abismo.ulx</pre>
+
+<pre style="margin-left: 40px;">PIC&nbsp;picAbismo abismo.png</pre>
+
+<pre style="margin-left: 40px;">SND sndAbismo abismo.ogg</pre>
+
+<pre style="margin-left: 40px;">COV portadaAbismo.jpg</pre>
+
+<pre style="margin-left: 40px;">BIB abismo.ifiction</pre>
+
+&nbsp;&nbsp;&nbsp; Pero
+en este caso es posible porque no existe conflicto de nombres (no
+existe más
+de un
+gráfico o sonido con el mismo nombre de archivo). Esto es por lo que
+podemos dejar esa tarea en manos de la herramienta, que
+tomará
+el nombre del archivo, pondrá su inicial en
+mayúsculas, y
+le pondrá el prefijo <span style="font-style: italic;">snd</span>
+si se trata de sonidos, o <span style="font-style: italic;">pic</span>
+si se trata de gráficos.<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-style: italic;">But
+in this case it is possible because does not exist any name clashing
+(there are not more than one resource file with the same name). That's
+why it is possible to leave this to the tool, whom will get the name of
+the file, will change the initial letter to upper case, and will prefix
+it withsnd or pic, depending of whether it is a graphic file or a sound
+file. <br>
+</span>
+<h2>Download</h2>
+
+<span style="font-style: italic;"></span><a href="../../download/index.html">You can download various binary files
+from here.</a><span style="font-style: italic;"></span>
+<h2>Legalidades</h2>
+
+<h3>Licencia</h3>
+
+Este programa se distribuye bajo licencia <a href="http://www.gnu.org/licenses/gpl-3.0-standalone.html">GPL</a>,
+con permiso del autor de <span style="font-style: italic;">blc</span>.<br>
+
+<span style="font-style: italic;">This program is distributed under the
+GPL license, with <a href="rossAllows.txt">permission granted by the
+author of</a></span><a href="rossAllows.txt"> blc</a>.<br>
+
+<br>
+
+</body></html>
